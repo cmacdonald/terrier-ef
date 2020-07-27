@@ -4,15 +4,15 @@
 
     <groupId>it.cnr.isti.hpclab</groupId>
     <artifactId>terrier-eliasfano</artifactId>
-    <version>1.5.3</version>
+    <version>1.5.4</version>
     <packaging>jar</packaging>
-    <name>Elias-Fano compression for Terrier 5.3</name>
+    <name>Elias-Fano compression for Terrier ${terrier.version}</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
-    <terrier.version>5.3</terrier.version>
+    <terrier.version>5.4-SNAPSHOT</terrier.version>
 
     <license.inceptionYear>2018</license.inceptionYear>
     <license.organizationName>Nicola Tonellotto</license.organizationName>
@@ -53,6 +53,13 @@
       <groupId>org.terrier</groupId>
       <artifactId>terrier-core</artifactId>
       <version>${terrier.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.terrier</groupId>
+      <artifactId>terrier-bit-compression</artifactId>
+      <version>${terrier.version}</version>
+      <scope>test</scope>
     </dependency>
 
     <dependency>
@@ -101,7 +108,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.6.0</version>
+        <version>3.8.1</version>
         <configuration>
           <source>${maven.compiler.target}</source>
           <target>${maven.compiler.source}</target>
