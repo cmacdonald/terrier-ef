@@ -27,6 +27,7 @@ import org.terrier.structures.BitFilePosition;
 import org.terrier.structures.BitIndexPointer;
 import org.terrier.structures.EntryStatistics;
 import org.terrier.structures.LexiconEntry;
+import org.terrier.structures.Pointer;
 import org.terrier.structures.seralization.FixedSizeWriteableFactory;
 
 /** 
@@ -34,7 +35,7 @@ import org.terrier.structures.seralization.FixedSizeWriteableFactory;
  * Based on the BasicLexiconEntry class in Terrier. 
  * Include offsets for docid and freq files compressed with Elias-Fano.  
  */
-public class EFLexiconEntry extends LexiconEntry implements BitIndexPointer
+public class EFLexiconEntry extends LexiconEntry
 {
 	private static final long serialVersionUID = 1L;
 
@@ -129,6 +130,14 @@ public class EFLexiconEntry extends LexiconEntry implements BitIndexPointer
 	{
 		return this.freqOffset;
 	}
+
+	@Override
+    public void setPointer(Pointer p) 
+    {
+		EFLexiconEntry other = (EFLexiconEntry)p;
+		this.freqOffset = other.freqOffset;
+		this.docidOffset = other.docidOffset;
+    }
 
 	/** {@inheritDoc} */
 	@Override
@@ -229,15 +238,6 @@ public class EFLexiconEntry extends LexiconEntry implements BitIndexPointer
 		this.TF  -= e.getFrequency();
 	}
 	
-	// Bunch of unnecessary methods related to the original Terrier inverted file format
-	@Override public long getOffset() 								  { throw new UnsupportedOperationException("Should not be invoked"); }
-	@Override public byte getOffsetBits() 							  { throw new UnsupportedOperationException("Should not be invoked"); }
-	@Override public void setOffset(long bytes, byte bits) 			  { throw new UnsupportedOperationException("Should not be invoked"); }
-	@Override public void setOffset(BitFilePosition pos) 			  { throw new UnsupportedOperationException("Should not be invoked"); }
-	@Override public void setBitIndexPointer(BitIndexPointer pointer) { throw new UnsupportedOperationException("Should not be invoked"); }
-	@Override public void setFileNumber(byte fileId) 				  { throw new UnsupportedOperationException("Should not be invoked"); }
-	@Override public byte getFileNumber() 							  { throw new UnsupportedOperationException("Should not be invoked"); }
-
 	/** {@inheritDoc} */
 	@Override
 	public int getMaxFrequencyInDocuments() 

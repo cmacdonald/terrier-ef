@@ -23,18 +23,6 @@ public class EFDocumentIndexEntry extends DocumentIndexEntry
 	}
 
 	@Override
-	public void setBitIndexPointer(BitIndexPointer pointer) 
-	{
-		throw new UnsupportedOperationException("Should not be invoked");
-	}
-
-	@Override
-	public void setOffset(BitFilePosition pos) 
-	{
-		throw new UnsupportedOperationException("Should not be invoked");
-	}
-
-	@Override
 	public void readFields(DataInput arg0) throws IOException 
 	{
 		throw new UnsupportedOperationException("Should not be invoked");

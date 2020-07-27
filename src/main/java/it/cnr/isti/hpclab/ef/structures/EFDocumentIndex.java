@@ -135,18 +135,6 @@ public class EFDocumentIndex implements DocumentIndex
 		{
 			this.doc_len = dl;
 		}
-		
-		@Override
-		public void setBitIndexPointer(BitIndexPointer pointer) 
-		{
-			throw new UnsupportedOperationException("Should not be invoked");
-		}
-
-		@Override
-		public void setOffset(BitFilePosition pos) 
-		{
-			throw new UnsupportedOperationException("Should not be invoked");
-		}
 
 		@Override
 		public void readFields(DataInput arg0) throws IOException 
